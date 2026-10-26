@@ -1,0 +1,313 @@
+/* ===== Lira Semijoias — estilos globais ===== */
+
+:root {
+  --gold: #b8924a;
+  --gold-dark: #94733a;
+  --gold-soft: #f3ead8;
+  --rose: #c98b8b;
+  --ink: #2b2420;
+  --muted: #7a6f66;
+  --line: #e8e1d8;
+  --bg: #fbf8f4;
+  --surface: #ffffff;
+  --success: #3f8a5a;
+  --success-soft: #e4f2e8;
+  --danger: #b5483f;
+  --danger-soft: #f8e4e1;
+  --warning: #b07a1a;
+  --warning-soft: #fbf0d9;
+  --radius: 10px;
+  --shadow: 0 6px 24px rgba(43, 36, 32, 0.07);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.3rem; }
+
+a {
+  color: var(--gold-dark);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.center { text-align: center; }
+.mt { margin-top: 1rem; }
+.mb { margin-bottom: 1rem; }
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.spacer { flex: 1; }
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+
+  h1 { margin: 0; }
+}
+
+/* ----- Botões ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #fff;
+  font: 500 0.9rem var(--sans);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) { background: var(--gold-dark); border-color: var(--gold-dark); }
+  &:disabled { opacity: 0.55; cursor: not-allowed; }
+
+  &.outline {
+    background: transparent;
+    color: var(--gold-dark);
+    &:hover:not(:disabled) { background: var(--gold-soft); }
+  }
+
+  &.ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--ink);
+    &:hover:not(:disabled) { background: var(--gold-soft); }
+  }
+
+  &.danger {
+    background: transparent;
+    border-color: var(--danger);
+    color: var(--danger);
+    &:hover:not(:disabled) { background: var(--danger-soft); }
+  }
+
+  &.success {
+    background: var(--success);
+    border-color: var(--success);
+    &:hover:not(:disabled) { filter: brightness(0.92); background: var(--success); }
+  }
+
+  &.sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
+  &.block { width: 100%; }
+}
+
+/* ----- Formulários ----- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  &.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .hint { font-size: 0.78rem; color: var(--muted); }
+  .error { font-size: 0.78rem; color: var(--danger); }
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184, 146, 74, 0.15);
+  }
+
+  &.ng-invalid.ng-touched { border-color: var(--danger); }
+}
+
+textarea { min-height: 110px; resize: vertical; }
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  input { width: auto; }
+}
+
+/* ----- Cartões e tabelas ----- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th,
+  td {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+
+  th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    background: #fdfbf8;
+    font-weight: 600;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  td.actions { white-space: nowrap; text-align: right; }
+}
+
+.thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--gold-soft);
+}
+
+/* ----- Badges e alertas ----- */
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--gold-soft);
+  color: var(--gold-dark);
+
+  &.success { background: var(--success-soft); color: var(--success); }
+  &.danger { background: var(--danger-soft); color: var(--danger); }
+  &.warning { background: var(--warning-soft); color: var(--warning); }
+  &.neutral { background: #eee; color: #666; }
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  background: var(--danger-soft);
+  color: var(--danger);
+
+  &.info { background: var(--gold-soft); color: var(--gold-dark); }
+  &.success { background: var(--success-soft); color: var(--success); }
+}
+
+.empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.price {
+  font-weight: 600;
+  color: var(--ink);
+
+  .old {
+    text-decoration: line-through;
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.85em;
+    margin-right: 0.35rem;
+  }
+}
+
+.img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-soft), #fff);
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 2rem;
+}
