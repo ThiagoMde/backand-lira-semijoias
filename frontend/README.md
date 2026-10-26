@@ -72,12 +72,17 @@ Em **Painel → + Novo produto**:
 > (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`).
 > Sem essas variáveis, use a opção de colar a URL da imagem.
 
-> **Atenção — primeiro administrador:** o `application.properties` declara
-> `app.bootstrap-admin.*` (`ADMIN_EMAIL` / `ADMIN_PASSWORD`), mas hoje nenhum código
-> do back end lê essas propriedades para criar o usuário. Até isso ser implementado,
-> crie o primeiro ADMIN diretamente na coleção `users` do MongoDB (senha com hash
-> BCrypt, `role: "ADMIN"`, `active: true`). Depois disso, os demais usuários podem
-> ser criados pela tela **Usuários** do painel.
+### Primeiro administrador
+
+Defina as variáveis de ambiente antes de subir o back end:
+
+```bash
+ADMIN_NAME="Seu Nome" ADMIN_EMAIL=admin@seudominio.com ADMIN_PASSWORD=senhaforte123 ./mvnw spring-boot:run
+```
+
+Na inicialização, o back end (`AdminBootstrap`) cria esse usuário com perfil ADMIN
+se o e-mail ainda não existir (senha com no mínimo 8 caracteres). Se já existir,
+nada é alterado. Os demais usuários podem ser criados pela tela **Usuários** do painel.
 
 ## Estrutura
 
